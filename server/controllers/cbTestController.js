@@ -1,4 +1,4 @@
-// Coinbase API
+// Coinbase API sandbox test account stuff
 var Client = require('coinbase').Client;
 var client = new Client({
 						'apiKey': 'KjDIt7jWZ8krOruE', 
