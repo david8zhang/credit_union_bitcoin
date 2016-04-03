@@ -17,26 +17,37 @@ router.route('/unions/index')
 	.get(unionController.indexUnions);
 
 // Union profile
+// args: union_id
 router.route('/unions/profile')
 	.get(unionController.unionInfo);
 
+// Create a union
+// args: charter_id
+router.route('/unions/create')
+	.post(unionController.createUnion);
+
 // Request to join a union
+// args: union_id, user_id
 router.route('/unions/request')
 	.post(unionController.requestUnion);
 
 // Join a union
+// args: union_id, user_id
 router.route('/unions/join')
 	.post(unionController.joinUnion);
 
 // Make Payment on a union loan
+// args: union_id, user_id
 router.route('/unions/pay_loan')
 	.post(unionController.payLoan);
 
-// Request Loan from the union 
+// Request Loan from the union
+// args: union_id, user_id 
 router.route('/unions/request_loan')
 	.post(unionController.requestLoan);
 
 // Get an actual loan from the union
+// args: union_id, user_id
 router.route('/unions/make_loan')
 	.post(unionController.makeLoan);
 
