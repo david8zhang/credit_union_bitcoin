@@ -36,23 +36,18 @@ router.route('/unions/request')
 
 // Join a union
 // args: union_id, user_id
-// router.route('/unions/join')
-// 	.post(unionController.joinUnion);
+router.route('/unions/join')
+	.post(unionController.joinUnion);
 
-// // Make Payment on a union loan
-// // args: union_id, user_id
-// router.route('/unions/pay_loan')
-// 	.post(unionController.payLoan);
-
-// // Request Loan from the union
-// // args: union_id, user_id 
-// router.route('/unions/request_loan')
-// 	.post(unionController.requestLoan);
+// Request Loan from the union
+// args: union_id, user_id 
+router.route('/unions/request_loan')
+	.post(unionController.requestLoan);
 
 // // Get an actual loan from the union
 // // args: union_id, user_id
-// router.route('/unions/make_loan')
-// 	.post(unionController.makeLoan);
+router.route('/unions/make_loan')
+	.post(unionController.makeLoan);
 
 /* -------------------------- USER API ENDPOINTS  -------------------------- */
 

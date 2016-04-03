@@ -25,7 +25,7 @@ describe("Union unit test",function(){
   it("should return the credit union balance and total assets", function(done) {
     // Calling union profile api route
     server
-    .get("/unions/profile?union_id=0994b69c0f1e6cf0dd9d969b592317a1f9e36a3f")
+    .get("/unions/profile?union_id=1908809186ff628219046de0bc1602766d0dcd0c")
     .expect("Content-type", /json/)
     .expect(200)
     .end(function(err, res) {
@@ -43,7 +43,7 @@ describe("Union unit test",function(){
   //   // Calling union profile api route
   //   server
   //   .post("/unions/create")
-  //   .send({charter_id: "1234", name: "union_of_pepes"})
+  //   .send({charter_id: "1234", name: "pepe_new_union", creator_id: "33c7676ea320cd1f4c927868ddba20a5b7cc274f"})
   //   .expect("Content-type", /json/)
   //   .expect(200)
   //   .end(function(err, res) {
@@ -71,5 +71,48 @@ describe("Union unit test",function(){
       should.equal(res.body.request.union_id, 1);
       done();
     });
+  });
+
+  it("Should allow users to join a union", function(done) {
+    server
+    .post("/unions/request")
+    .send({user_id: "33c7676ea320cd1f4c927868ddba20a5b7cc274f", union_id: "1908809186ff628219046de0bc1602766d0dcd0c"})
+    .expect("Content-type", /json/)
+    .expect(200)
+    .end(function(err, res) {
+      should.equal(res.status, 200);
+      done();
+    })
+  });
+
+  /* We'll worry about this later */
+  it("Should allow users to make loan requests on a union", function(done) {
+    server
+    .post("/unions/request_loan")
+    .send({user_id:"33c7676ea320cd1f4c927868ddba20a5b7cc274f", union_id:"1908809186ff628219046de0bc1602766d0dcd0c"})
+    .expect("Content-type", /json/)
+    .expect(200)
+    .end(function(err, res) {
+      should.equal(res.status, 200);
+      should.exist(res.body.request);
+      done();
+    })
+  });
+
+  it("Should allow credit union itself to actually make loans", function(done) {
+    server
+    .post("/unions/make_loan")
+    .send({user_id:"33c7676ea320cd1f4c927868ddba20a5b7cc274f", 
+           union_id:"1908809186ff628219046de0bc1602766d0dcd0c",
+           amount: "0.0001"})
+    .expect("Content-type", /json/)
+    .expect(200)
+    .end(function(err, res) {
+      should.equal(res.status, 200);
+      should.exist(res.body.acct.transaction_id);
+      should.exist(res.body.acct.balance);
+      should.notEqual(res.body.acct.balance, 0);
+      done();
+    })
   });
 });

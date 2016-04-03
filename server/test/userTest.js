@@ -32,7 +32,8 @@ describe("Users unit test",function(){
     })
   })
 
-  it("should create a new user with the given parameters", function(done) {
+  /*UNCOMMENT WHEN MAKING CHANGES TO USER CREATION*/
+/*  it("should create a new user with the given parameters", function(done) {
     server
     .post('/users/create')
     .send({username:"dank_memes", password:"pepeword", email:"dank@pepe.com", wallet_id: "79669e44-ee39-5430-a684-8a9e29aabab7"})
@@ -43,7 +44,7 @@ describe("Users unit test",function(){
       should.notEqual(res.body.user.user_id, undefined)
       done();
     })
-  });
+  });*/
 
   it("should get a user's profile", function(done) {
     server
