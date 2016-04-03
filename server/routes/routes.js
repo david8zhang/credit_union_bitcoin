@@ -40,4 +40,17 @@ router.route('/unions/request_loan')
 router.route('/unions/make_loan')
 	.post(unionController.makeLoan);
 
+/* -------------------------- UNION API ENDPOINTS  -------------------------- */
+
+// Create User
+router.route('/users/create')
+	.post(userController.createUser);
+
+// Remove User
+router.route('/users/remove')
+	.delete(userController.removeUser);
+
+// Get User
+router.route('/users/get')
+	.get(userController.getUser);
 module.exports = router;
