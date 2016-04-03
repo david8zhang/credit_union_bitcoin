@@ -9,10 +9,10 @@
   },
   "author": "David Zhang",
   "license": "ISC",
-  "dependencies" : {
-    "coinbase": "^2.0.4",
+  "dependencies": {
     "aws-sdk": "^2.2.26",
     "body-parser": "^1.14.2",
+    "coinbase": "^2.0.4",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.0",
     "cors": "^2.7.1",
@@ -27,6 +27,8 @@
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "sha-1": "^0.1.1",
-    "sha1": "^1.1.1"
+    "sha1": "^1.1.1",
+    "should": "^8.3.0",
+    "supertest": "^1.2.0"
   }
 }
