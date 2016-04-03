@@ -4,6 +4,7 @@ var cbTestController = require('../controllers/cbTestController.js');
 var unionController = require('../controllers/unionController.js');
 var userController = require('../controllers/userController.js');
 var charterController = require('../controllers/charterController.js');
+var authController = require('../controllers/authController.js');
 
 /* -------------------------- TEST API ENDPOINTS  -------------------------- */
 router.route('/coinbase/test/get_account')
@@ -56,28 +57,36 @@ router.route('/unions/request')
 /* -------------------------- USER API ENDPOINTS  -------------------------- */
 
 // Create User
-// router.route('/users/create')
-// 	.post(userController.createUser);
+router.route('/users/create')
+	.post(userController.createUser);
 
 // // Remove User
 // router.route('/users/remove')
 // 	.delete(userController.removeUser);
 
-// // Get User
-// router.route('/users/get')
-// 	.get(userController.getUser);
+// Get User
+router.route('/users/profile')
+	.get(authController.authToken, userController.getUser);
+
+// Backdoor for testing purposes only
+router.route('/users/backDoor')
+	.post(userController.backDoor);
+
+router.route('/users/authenticate')
+	.post(userController.authUser);
 
 /* -------------------------- CHARTER API ENDPOINTS  -------------------------- */
 // Create a new charter
-// router.route('/charter/create')
-// 	.post(charterController.createCharter);
+router.route('/charter/create')
+	.post(charterController.createCharter);
 
 // // Get the charter information
-// router.route('/charter/get')
-// 	.get(charterController.getCharter);
+router.route('/charter/profile')
+	.get(charterController.getCharter);
 
 // // Edit the chater
 // router.route('/charter/edit')
-// 	.get(charterController.editCharter);
+// 	.post(charterController.editCharter);
+
 
 module.exports = router;
