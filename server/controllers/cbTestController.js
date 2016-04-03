@@ -1,8 +1,15 @@
 // Coinbase API sandbox test account stuff
 var Client = require('coinbase').Client;
+
+var daniel_apiKey = "A1GGC1usuI2VYl7f";
+var daniel_secretKey = "Z8AUD8pGe50PQTeQXA4zAM0z3wZ3Kqak";
+
+var my_apiKey = "KjDIt7jWZ8krOruE";
+var my_apiSecretKey = "76NyANKM2CBzaQWnx28MSwoKwVh9b0eZ";
+
 var client = new Client({
-						'apiKey': 'KjDIt7jWZ8krOruE', 
-						 'apiSecret': '76NyANKM2CBzaQWnx28MSwoKwVh9b0eZ',
+						'apiKey': my_apiKey, 
+						 'apiSecret': my_apiSecretKey,
 						 'baseApiUri':'https://api.sandbox.coinbase.com/v2/',
 						 'tokenUri': 'https://api.sandbox.coinbase.com/oauth/token'
 						});
