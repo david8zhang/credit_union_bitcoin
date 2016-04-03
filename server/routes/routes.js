@@ -2,8 +2,10 @@ var express = require('express');
 var router = express.Router();
 var cbTestController = require('../controllers/cbTestController.js');
 var unionController = require('../controllers/unionController.js');
+var userController = require('../controllers/userController.js');
+var charterController = require('../controllers/charterController.js');
 
-// TEST Api Endpoints
+/* -------------------------- TEST API ENDPOINTS  -------------------------- */
 router.route('/coinbase/test/get_account')
 	.post(cbTestController.testCoin);
 
@@ -21,47 +23,61 @@ router.route('/unions/index')
 router.route('/unions/profile')
 	.get(unionController.unionInfo);
 
-// Create a union
-// args: charter_id
+// // Create a union
+// // args: charter_id
 router.route('/unions/create')
 	.post(unionController.createUnion);
 
-// Request to join a union
-// args: union_id, user_id
+// // Request to join a union
+// // args: union_id, user_id
 router.route('/unions/request')
 	.post(unionController.requestUnion);
 
 // Join a union
 // args: union_id, user_id
-router.route('/unions/join')
-	.post(unionController.joinUnion);
+// router.route('/unions/join')
+// 	.post(unionController.joinUnion);
 
-// Make Payment on a union loan
-// args: union_id, user_id
-router.route('/unions/pay_loan')
-	.post(unionController.payLoan);
+// // Make Payment on a union loan
+// // args: union_id, user_id
+// router.route('/unions/pay_loan')
+// 	.post(unionController.payLoan);
 
-// Request Loan from the union
-// args: union_id, user_id 
-router.route('/unions/request_loan')
-	.post(unionController.requestLoan);
+// // Request Loan from the union
+// // args: union_id, user_id 
+// router.route('/unions/request_loan')
+// 	.post(unionController.requestLoan);
 
-// Get an actual loan from the union
-// args: union_id, user_id
-router.route('/unions/make_loan')
-	.post(unionController.makeLoan);
+// // Get an actual loan from the union
+// // args: union_id, user_id
+// router.route('/unions/make_loan')
+// 	.post(unionController.makeLoan);
 
-/* -------------------------- UNION API ENDPOINTS  -------------------------- */
+/* -------------------------- USER API ENDPOINTS  -------------------------- */
 
 // Create User
-router.route('/users/create')
-	.post(userController.createUser);
+// router.route('/users/create')
+// 	.post(userController.createUser);
 
-// Remove User
-router.route('/users/remove')
-	.delete(userController.removeUser);
+// // Remove User
+// router.route('/users/remove')
+// 	.delete(userController.removeUser);
 
-// Get User
-router.route('/users/get')
-	.get(userController.getUser);
+// // Get User
+// router.route('/users/get')
+// 	.get(userController.getUser);
+
+/* -------------------------- CHARTER API ENDPOINTS  -------------------------- */
+// Create a new charter
+// router.route('/charter/create')
+// 	.post(charterController.createCharter);
+
+// // Get the charter information
+// router.route('/charter/get')
+// 	.get(charterController.getCharter);
+
+// // Edit the chater
+// router.route('/charter/edit')
+// 	.get(charterController.editCharter);
+
 module.exports = router;
