@@ -44,15 +44,32 @@ exports.unionInfo = function(req, res) {
 		":union_id" : union_id
 	}
 	params.FilterExpression = "union_id = :union_id";
+
 	docClient.scan(params, function(err, data) {
 		if(err) {
 			console.log(err);
 			res.status(400).send(err);
 		} else {
 			var response = {};
-			var credit_union = JSON.parse(JSON.stringify(data));
-			response.credit_union = credit_union;
-			res.status(200).send(response);
+			var credit_union = {};
+
+			// The raw json data
+			var union_raw = JSON.parse(JSON.stringify(data));
+			
+			// Enter in the id's and name
+			var account_id = union_raw.Items[0].union_wallet_id;
+			var union_name = union_raw.Items[0].union_name;
+			var union_id = union_raw.Items[0].union_id;
+
+			// Get the balance of the credit union
+			client.getAccount(account_id, function(err, account) {
+				credit_union.union_name = union_name;
+				credit_union.account_id = account_id;
+				credit_union.union_id = union_id;
+				credit_union.balance = account.balance.amount;
+				response.credit_union = credit_union;
+				res.status(200).send(response);
+			})
 		}
 	})
 };

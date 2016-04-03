@@ -2,8 +2,10 @@ var express = require('express');
 var router = express.Router();
 var cbTestController = require('../controllers/cbTestController.js');
 var unionController = require('../controllers/unionController.js');
+var userController = require('../controllers/userController.js');
+var charterController = require('../controllers/charterController.js');
 
-// TEST Api Endpoints
+/* -------------------------- TEST API ENDPOINTS  -------------------------- */
 router.route('/coinbase/test/get_account')
 	.post(cbTestController.testCoin);
 
@@ -65,5 +67,17 @@ router.route('/unions/request')
 // router.route('/users/get')
 // 	.get(userController.getUser);
 
+/* -------------------------- CHARTER API ENDPOINTS  -------------------------- */
+// Create a new charter
+// router.route('/charter/create')
+// 	.post(charterController.createCharter);
+
+// // Get the charter information
+// router.route('/charter/get')
+// 	.get(charterController.getCharter);
+
+// // Edit the chater
+// router.route('/charter/edit')
+// 	.get(charterController.editCharter);
 
 module.exports = router;

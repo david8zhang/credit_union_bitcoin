@@ -22,17 +22,18 @@ describe("Union unit test",function(){
     });
   });
 
-  it("should return the credit union profile", function(done) {
+  it("should return the credit union balance and total assets", function(done) {
     // Calling union profile api route
     server
-    .get("/unions/profile?union_id=1")
+    .get("/unions/profile?union_id=0994b69c0f1e6cf0dd9d969b592317a1f9e36a3f")
     .expect("Content-type", /json/)
     .expect(200)
     .end(function(err, res) {
       // HTTP Status should be 200
       should.equal(res.status, 200);
-      // The credit union itself should exist
       should.exist(res.body.credit_union);
+      should.notEqual(res.body.credit_union.balance, null);
+      should.notEqual(res.body.credit_union.balance, undefined);
       done();
     })
   });
@@ -42,7 +43,7 @@ describe("Union unit test",function(){
   //   // Calling union profile api route
   //   server
   //   .post("/unions/create")
-  //   .send({charter_id: "1234", name: "test_union"})
+  //   .send({charter_id: "1234", name: "union_of_pepes"})
   //   .expect("Content-type", /json/)
   //   .expect(200)
   //   .end(function(err, res) {
