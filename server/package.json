@@ -1,0 +1,34 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server for bitcoin transactions in credit union",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "David Zhang",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.2.26",
+    "body-parser": "^1.14.2",
+    "coinbase": "^2.0.4",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.0",
+    "cors": "^2.7.1",
+    "dynamodb-doc": "^1.0.0",
+    "express": "^4.13.3",
+    "express-session": "^1.12.1",
+    "method-override": "^2.3.5",
+    "morgan": "^1.6.1",
+    "node-gcm": "^0.14.0",
+    "passport": "^0.3.2",
+    "passport-http-bearer": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "sha-1": "^0.1.1",
+    "sha1": "^1.1.1",
+    "should": "^8.3.0",
+    "supertest": "^1.2.0"
+  }
+}
